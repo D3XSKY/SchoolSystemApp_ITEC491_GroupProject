@@ -1,13 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ITEC_491_GroupProject.Utils
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Output
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public static void StartApp()
         {
             Console.WriteLine("School system console application is starting.");
@@ -2215,6 +2218,9 @@ namespace ITEC_491_GroupProject.Utils
             AutoReturn(3);
             AddRecord();
         }
+        /// <summary>
+        /// 
+        /// </summary>
         private static void AddStudent()
         {
             Console.Clear();

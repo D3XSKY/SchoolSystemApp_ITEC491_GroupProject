@@ -1,12 +1,7 @@
-﻿using ITEC_491_GroupProject;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ITEC_491_GroupProject.Utils
 {
@@ -15,13 +10,15 @@ namespace ITEC_491_GroupProject.Utils
         public static Database LoadData()
         {
             string data;
-            DirectoryInfo dir = new DirectoryInfo(@"C:\Users\Dejan\Documents\Visual Studio 2015\Projects\ITEC_491_GroupProject\ITEC_491_GroupProject\Data");
+            string path = AppContext.BaseDirectory;
+            DirectoryInfo dir = new DirectoryInfo(path);
+            string filepath = path + "\\data.txt";
             FileInfo[] TXTFiles = dir.GetFiles("data.txt");
             if (TXTFiles.Length == 0)
             {
                 WorkContext.database = new Database();
                 data = JsonConvert.SerializeObject(WorkContext.database);
-                File.AppendAllText(@"C:\Users\Dejan\Documents\Visual Studio 2015\Projects\ITEC_491_GroupProject\ITEC_491_GroupProject\Data\data.txt",data);
+                File.AppendAllText(filepath,data);
                 data = ReadFile();
                 WorkContext.database = JsonConvert.DeserializeObject<Database>(data);
                 return WorkContext.database;
@@ -40,7 +37,7 @@ namespace ITEC_491_GroupProject.Utils
                     else
                     {
                         data = JsonConvert.SerializeObject(WorkContext.database);
-                        File.AppendAllText(@"C:\Users\Dejan\Documents\Visual Studio 2015\Projects\ITEC_491_GroupProject\ITEC_491_GroupProject\Data\data.txt", data);
+                        File.AppendAllText(filepath, data);
                         data = ReadFile();
                         WorkContext.database = JsonConvert.DeserializeObject<Database>(data);
                         return WorkContext.database;
@@ -51,8 +48,10 @@ namespace ITEC_491_GroupProject.Utils
         }
         public static string ReadFile()
         {
+            string path = AppContext.BaseDirectory;
+            string filepath = path + "\\data.txt";
             string text;
-            var fileStream = new FileStream(@"C:\Users\Dejan\Documents\Visual Studio 2015\Projects\ITEC_491_GroupProject\ITEC_491_GroupProject\Data\data.txt", FileMode.Open, FileAccess.Read);
+            var fileStream = new FileStream(filepath, FileMode.Open, FileAccess.Read);
             using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
             {
                 text = streamReader.ReadToEnd();
@@ -61,11 +60,12 @@ namespace ITEC_491_GroupProject.Utils
         }
         public static void Save(Database db)
         {
+            string path = AppContext.BaseDirectory;
+            string filepath = path + "\\data.txt";
             string data;
-
             data = JsonConvert.SerializeObject(db);
-            File.WriteAllText((@"C:\Users\Dejan\Documents\Visual Studio 2015\Projects\ITEC_491_GroupProject\ITEC_491_GroupProject\Data\data.txt"), string.Empty);
-            File.AppendAllText(@"C:\Users\Dejan\Documents\Visual Studio 2015\Projects\ITEC_491_GroupProject\ITEC_491_GroupProject\Data\data.txt", data);
+            File.WriteAllText(filepath, string.Empty);
+            File.AppendAllText(filepath, data);
         }
 
     }
