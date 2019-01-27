@@ -4,6 +4,13 @@ using System.Threading;
 
 namespace ITEC_491_GroupProject.Utils
 {
+    /// <summary>
+    /// We use class Teacher to handle data about the teachers.
+    /// </summary>
+    /// <remarks>
+    /// Parameters of this class are: nextId, id, appointmentDate, teachingCourse, role.
+    /// We used Set and Get methods to set/get those parameters for teacher object.
+    /// </remarks>
     public class Teacher : Person
     {
         static int nextId;

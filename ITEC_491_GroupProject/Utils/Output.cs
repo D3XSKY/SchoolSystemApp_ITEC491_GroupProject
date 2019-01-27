@@ -4,19 +4,24 @@ using System.Linq;
 namespace ITEC_491_GroupProject.Utils
 {
     /// <summary>
-    /// 
+    /// Output class is used for handling the logic of application. Most of application workflow is contained inside methods within this class. 
     /// </summary>
     public class Output
     {
         /// <summary>
-        /// 
+        /// Displays introduction message when application is started.
         /// </summary>
         public static void StartApp()
         {
             Console.WriteLine("School system console application is starting.");
+            // wait for 2 seconds
             System.Threading.Thread.Sleep(2000);
             Console.Clear();
         }
+        /// <summary>
+        /// Master options menu. Displayed right after application starts and database is loaded. 
+        /// This is the top-level menu which reads input number and calls sub-menus accordingly.
+        /// </summary>
         public static void MasterOptions()
         {
             Console.WriteLine("---> School System <---");
@@ -29,12 +34,15 @@ namespace ITEC_491_GroupProject.Utils
             Console.WriteLine("Enter -1 to Exit application!!\n");
             int input;
             string consoleRead;
+            // checking if input is int
             consoleRead = Console.ReadLine();
             bool conversionSuccess = int.TryParse(consoleRead, out input);
             if (conversionSuccess == true)
             {
+                // looping until user enters -1 to exit/go back
                 while (input != -1)
                 {
+                    // switching between available options and calling methods that will handle further workflow
                     switch (input)
                     {
                         case 1:
@@ -53,6 +61,7 @@ namespace ITEC_491_GroupProject.Utils
                             RemoveRecord();
                             break;
                         default:
+                            // default case returns user to the same place here we call MasterOptions() and user is prompt about input again
                             Console.WriteLine("Input number out of range! Please choose again!");
                             System.Threading.Thread.Sleep(1000);
                             Console.Clear();
@@ -61,14 +70,19 @@ namespace ITEC_491_GroupProject.Utils
                     }
                     break;
                 }
+                // if -1 then exit
                 Exit();
             }
             else
             {
+                // anything else we call this method again ( kind of validation for input)
                 Console.Clear();
                 MasterOptions();
             }
         }
+        /// <summary>
+        ///  Method that displays Removal menu. User enters number to choose from available options. -1 will return user to master menu.
+        /// </summary>
         private static void RemoveRecord()
         {
             Console.Clear();
@@ -82,12 +96,15 @@ namespace ITEC_491_GroupProject.Utils
             Console.WriteLine("Enter -1 to go back.");
             int input;
             string consoleRead;
+            // checking if input is int
             consoleRead = Console.ReadLine();
             bool conversionSuccess = int.TryParse(consoleRead, out input);
             if (conversionSuccess == true)
             {
+                // looping until user enters -1 to exit/go back
                 while (input != -1)
                 {
+                    // switching between available options and calling methods that will handle further workflow
                     switch (input)
                     {
                         case 1:
@@ -103,6 +120,7 @@ namespace ITEC_491_GroupProject.Utils
                             RemoveCourse();
                             break;
                         default:
+                            // default case returns user to the same place here we call RemoveRecord() and user is prompted about input again
                             Console.WriteLine("Input number out of range! Please choose again!");
                             System.Threading.Thread.Sleep(1000);
                             Console.Clear();
@@ -111,6 +129,7 @@ namespace ITEC_491_GroupProject.Utils
                     }
                     break;
                 }
+                //go back to master options
                 Console.Clear();
                 MasterOptions();
             }
@@ -120,9 +139,14 @@ namespace ITEC_491_GroupProject.Utils
                 RemoveRecord();
             }
         }
+        /// <summary>
+        /// Method for removing the student from database. If there are existing students user can remove them from database using their id from shortlist.
+        /// </summary>
         private static void RemoveStudent()
         {
+            // display available students
             StudentShortList(true);
+            // prompt and handle input from user
             Console.WriteLine("Enter Id of student you want to remove: ");
             Console.WriteLine("Enter -1 to exit delete mode and go back to selection");
             int input;
@@ -131,41 +155,53 @@ namespace ITEC_491_GroupProject.Utils
             bool conversionSuccess = int.TryParse(consoleRead, out input);
             if (conversionSuccess == true)
             {
+                // looping until user enters -1 to exit/go back
                 while (input != -1)
                 {
+                    // switching between available options and calling methods that will handle further workflow
+                    // if user enters number that is not -1 we'll look inside db if student with that id exist
                     if (WorkContext.database.Students.Any(x => x.Id == input))
                     {
                         Student s = new Student();
                         s = WorkContext.database.GetStudent(input);
+                        // list information about student record that is removed
                         DisplayLastRemoved(s, null, null, null);
+                        // remove student from database
                         WorkContext.database.RemoveStudent(input);
                         Console.WriteLine("\n");
                         Console.WriteLine("Student removed successfully.\n");
+                        // save database ( rewrite inside txt file)
                         DatabaseUtilities.Save(WorkContext.database);
                         System.Threading.Thread.Sleep(1000);
                         AutoReturn(3);
+                        // go back to Remove menu
                         RemoveRecord();
-
                     }
                     else
                     {
+                        // case where student enters number for which id does not exist
                         Console.WriteLine("\nStudent with Id " + input + " does not exist therefore nothing was removed.\n");
                         break;
                     }
-
                 }
+                // go back to remove menu
                 Console.Clear();
                 RemoveRecord();
             }
             else
             {
+                // go back to remove menu if input is bad ( string etc) 
                 Console.WriteLine("\nInvalid input.");
                 AutoReturn(2);
                 RemoveRecord();
             }
         }
+        /// <summary>
+        /// Method for removing the teacher from database. If there are existing teachers user can remove them from database using their id from shortlist.
+        /// </summary>
         private static void RemoveTeacher()
         {
+            // display teachers if they exist
             TeacherShortList(true);
             Console.WriteLine("Enter Id of teacher you want to remove: ");
             Console.WriteLine("Enter -1 to exit delete mode and go back to selection");
@@ -180,40 +216,53 @@ namespace ITEC_491_GroupProject.Utils
                     if (WorkContext.database.Teachers.Any(x => x.Id == input))
                     {
                         Teacher t = new Teacher();
+                        // get teacher from db 
                         t = WorkContext.database.GetTeacher(input);
+                        // display information about removed record
                         DisplayLastRemoved(null, t, null, null);
+                        // remove teacher
                         WorkContext.database.RemoveTeacher(input);
                         Console.WriteLine("\n");
                         Console.WriteLine("Teacher removed successfully.\n");
+                        // save db
                         DatabaseUtilities.Save(WorkContext.database);
                         System.Threading.Thread.Sleep(1000);
                         AutoReturn(3);
+                        // back to remove record menu
                         RemoveRecord();
 
                     }
                     else
                     {
+                        // display info to the user if there are no teachers with entered number (id)
                         Console.WriteLine("\nTeacher with Id " + input + " does not exist therefore nothing was removed.\n");
                         break;
                     }
 
                 }
+                // go back to remove menu
                 Console.Clear();
                 RemoveRecord();
             }
             else
             {
+                // go back to remove menu
                 Console.WriteLine("\nInvalid input.");
                 AutoReturn(2);
                 RemoveRecord();
             }
         }
+        /// <summary>
+        /// Method for removing the staff from database. If there are existing staff persons user can remove them from database using their id from shortlist.
+        /// </summary>
         private static void RemoveStaff()
         {
+            // display info about staff
             StaffShortList(true);
             Console.WriteLine("Enter Id of staff you want to remove: ");
             Console.WriteLine("Enter -1 to exit delete mode and go back to selection");
             int input;
+            // handle input
             string consoleRead;
             consoleRead = Console.ReadLine();
             bool conversionSuccess = int.TryParse(consoleRead, out input);
@@ -221,43 +270,57 @@ namespace ITEC_491_GroupProject.Utils
             {
                 while (input != -1)
                 {
+                    // check db if staff with id == input exist
                     if (WorkContext.database.Staff.Any(x => x.Id == input))
                     {
                         Staff st = new Staff();
+                        // get staff from db
                         st = WorkContext.database.GetStaff(input);
+                        // display info about record that is removed
                         DisplayLastRemoved(null, null, st, null);
+                        // remvove record from db
                         WorkContext.database.RemoveStaff(input);
                         Console.WriteLine("\n");
                         Console.WriteLine("Staff removed successfully.\n");
+                        // save db
                         DatabaseUtilities.Save(WorkContext.database);
                         System.Threading.Thread.Sleep(1000);
                         AutoReturn(3);
+                        // go back to remove menu
                         RemoveRecord();
 
                     }
                     else
                     {
+                        // if no staff with entered number exist notify user
                         Console.WriteLine("\nStaff with Id " + input + " does not exist therefore nothing was removed.\n");
                         break;
                     }
 
                 }
+                // go back to remove menu
                 Console.Clear();
                 RemoveRecord();
             }
             else
             {
+                // go back to remove menu
                 Console.WriteLine("\nInvalid input.");
                 AutoReturn(2);
                 RemoveRecord();
             }
         }
+        /// <summary>
+        /// Method for removing the course from database. If there are existing courses user can remove them from database using their id from shortlist.
+        /// </summary>
         private static void RemoveCourse()
         {
+            // display existing courses
             CourseShortList(true);
             Console.WriteLine("Enter Id of course you want to remove: ");
             Console.WriteLine("Enter -1 to exit delete mode and go back to selection");
             int input;
+            // handle input
             string consoleRead;
             consoleRead = Console.ReadLine();
             bool conversionSuccess = int.TryParse(consoleRead, out input);
@@ -265,37 +328,49 @@ namespace ITEC_491_GroupProject.Utils
             {
                 while (input != -1)
                 {
+                    // check if course with input == id exist in db 
                     if (WorkContext.database.Course.Any(x => x.Id == input))
                     {
                         Course c = new Course();
+                        // fetch information about record
                         c = WorkContext.database.GetCourse(input);
+                        // display info about record that is removed
                         DisplayLastRemoved(null, null, null, c);
+                        // remove course record from db
                         WorkContext.database.RemoveCourse(input);
                         Console.WriteLine("\n");
                         Console.WriteLine("Course removed successfully.\n");
+                        //save db
                         DatabaseUtilities.Save(WorkContext.database);
                         System.Threading.Thread.Sleep(1000);
                         AutoReturn(3);
+                        // go back to remove menu
                         RemoveRecord();
 
                     }
                     else
                     {
+                        // if course id does not exist
                         Console.WriteLine("\nCourse with Id " + input + " does not exist therefore nothing was removed.\n");
                         break;
                     }
 
                 }
+                // go back to remove menu
                 Console.Clear();
                 RemoveRecord();
             }
             else
             {
+                // go back to remove menu in case that input is invalid (all cases where user enters string etc..)
                 Console.WriteLine("\nInvalid input.");
                 AutoReturn(2);
                 RemoveRecord();
             }
         }
+        /// <summary>
+        /// Method that displays edit menu for all records and handles all editing workflow.
+        /// </summary>
         private static void EditRecord()
         {
             Console.Clear();
@@ -347,8 +422,14 @@ namespace ITEC_491_GroupProject.Utils
                 EditRecord();
             }
         }
+        /// <summary>
+        /// Method that displays edit menu for editing courses. 
+        /// User have few options to choose how to edit course. 
+        /// In case he enters -1 he will go back to Edit Record menu.
+        /// </summary>
         private static void EditCourse()
         {
+            // display menu options
             Console.Clear();
             Console.WriteLine("---> Edit Course <---");
             Console.WriteLine("Available options(Enter number): ");
@@ -360,13 +441,16 @@ namespace ITEC_491_GroupProject.Utils
             Console.WriteLine("\n");
             Console.WriteLine("Enter -1 to go back.");
             int input;
+            // handle input
             string consoleRead;
             consoleRead = Console.ReadLine();
             bool conversionSuccess = int.TryParse(consoleRead, out input);
             if (conversionSuccess == true)
             {
+                // looping until user enters -1 to exit/go back
                 while (input != -1)
                 {
+                    // switching between available options and executing methods that will handle further workflow
                     switch (input)
                     {
                         case 1:
@@ -385,26 +469,35 @@ namespace ITEC_491_GroupProject.Utils
                             Console.WriteLine("Input number out of range! Please choose again!");
                             System.Threading.Thread.Sleep(1000);
                             Console.Clear();
+                            // go back to course edit menu
                             EditCourse();
                             break;
                     }
                     break;
                 }
+                // go back to edit record
                 Console.Clear();
                 EditRecord();
             }
             else
             {
+                // go back to course edit menu
                 Console.Clear();
                 EditCourse();
             }
         }
+        /// <summary>
+        /// Method that handles edition of all information about course. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new information (almost all Course properties) for course
+        /// </summary>
         private static void EditCourseAll()
         {
+            // display courses in shortlist
             CourseShortList();
             Console.WriteLine("Enter Id of course you want to edit: ");
             Console.WriteLine("Enter -1 to exit edit mode and go back to selection");
             int input;
+            //handle input
             string consoleRead;
             consoleRead = Console.ReadLine();
             bool conversionSuccess = int.TryParse(consoleRead, out input);
@@ -412,32 +505,43 @@ namespace ITEC_491_GroupProject.Utils
             {
                 while (input != -1)
                 {
+                    // if course is found then proceed
                     if (WorkContext.database.Course.Any(x => x.Id == input))
                     {
                         Course c = new Course();
+                        // fetch course from database
                         c = WorkContext.database.GetCourse(input);
+                        // course title update
                         Console.WriteLine("Current course title:\t" + c.CourseTitle);
                         Console.WriteLine("New course title:\t");
                         c.CourseTitle = Console.ReadLine();
+                        // course ects points update
                         Console.WriteLine("Current Ects Points:\t" + c.EctsPoints);
                         Console.WriteLine("New Ects Points:\t");
                         c.EctsPoints = Convert.ToInt32(Console.ReadLine());
+                        // course description update
                         Console.WriteLine("Current description:\t" + c.Description);
                         Console.WriteLine("New course description:\t");
                         c.Description = Console.ReadLine();
+                        // auto update lastedited property
                         c.LastEdited = DateTime.Now;
                         Console.WriteLine("\n");
+                        // update record in database
                         WorkContext.database.PersistCourseChanges(c);
                         Console.WriteLine("Course edited successfully.\n");
+                        // save database
                         DatabaseUtilities.Save(WorkContext.database);
                         System.Threading.Thread.Sleep(1000);
-                        DisplayLastEdited(null,null,null,c);
+                        // displayed edited record
+                        DisplayLastEdited(null, null, null, c);
                         AutoReturn(3);
+                        //return to edit record menu
                         EditRecord();
 
                     }
                     else
                     {
+                        //let user know number he entered does not match any ids in database
                         Console.WriteLine("\nCourse with Id " + input + " does not exist.\n");
                         break;
                     }
@@ -445,6 +549,7 @@ namespace ITEC_491_GroupProject.Utils
                 }
                 AutoReturn(3);
                 Console.Clear();
+                // go back to edit course menu
                 EditCourse();
             }
             else
@@ -454,8 +559,13 @@ namespace ITEC_491_GroupProject.Utils
                 EditCourse();
             }
         }
+        /// <summary>
+        /// Method that handles edition of course title. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new course title for course.
+        /// </summary>
         private static void EditCourseTitle()
         {
+            // display courses in shortlist
             CourseShortList();
             Console.WriteLine("Enter Id of course you want to edit: ");
             Console.WriteLine("Enter -1 to exit edit mode and go back to selection");
@@ -467,26 +577,35 @@ namespace ITEC_491_GroupProject.Utils
             {
                 while (input != -1)
                 {
+                    // if course is found then proceed
                     if (WorkContext.database.Course.Any(x => x.Id == input))
                     {
                         Course c = new Course();
+                        // fetch course from database
                         c = WorkContext.database.GetCourse(input);
+                        // course title update
                         Console.WriteLine("Current course title:\t" + c.CourseTitle);
                         Console.WriteLine("New course title:\t");
                         c.CourseTitle = Console.ReadLine();
+                        // auto update lastedited property
                         c.LastEdited = DateTime.Now;
                         Console.WriteLine("\n");
+                        // update record in database
                         WorkContext.database.PersistCourseChanges(c);
                         Console.WriteLine("Course edited successfully.\n");
+                        // save database
                         DatabaseUtilities.Save(WorkContext.database);
                         System.Threading.Thread.Sleep(1000);
+                        // displayed edited record
                         DisplayLastEdited(null, null, null, c);
                         AutoReturn(3);
+                        //return to edit record menu
                         EditRecord();
 
                     }
                     else
                     {
+                        //let user know number he entered does not match any ids in database
                         Console.WriteLine("\nCourse with Id " + input + " does not exist.\n");
                         break;
                     }
@@ -494,17 +613,24 @@ namespace ITEC_491_GroupProject.Utils
                 }
                 AutoReturn(3);
                 Console.Clear();
+                // go back to edit course menu
                 EditCourse();
             }
             else
             {
                 Console.WriteLine("\nInvalid input.");
                 AutoReturn(2);
+                // go back to edit course menu
                 EditCourse();
             }
         }
+        /// <summary>
+        /// Method that handles edition of course ects points. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new course ects points for course.
+        /// </summary>
         private static void EditCourseEctsPoints()
         {
+            // display courses in shortlist
             CourseShortList();
             Console.WriteLine("Enter Id of course you want to edit: ");
             Console.WriteLine("Enter -1 to exit edit mode and go back to selection");
@@ -516,44 +642,60 @@ namespace ITEC_491_GroupProject.Utils
             {
                 while (input != -1)
                 {
+                    // if course is found then proceed
                     if (WorkContext.database.Course.Any(x => x.Id == input))
                     {
                         Course c = new Course();
+                        // fetch course from database
                         c = WorkContext.database.GetCourse(input);
+                        // course ects points update
                         Console.WriteLine("Current Ects Points:\t" + c.EctsPoints);
                         Console.WriteLine("New Ects Points:\t");
-                        c.EctsPoints = Convert.ToInt32(Console.ReadLine());
+                        c.EctsPoints = Convert.ToInt32(Console.ReadLine()); //TO-DO handle input better
                         c.LastEdited = DateTime.Now;
+                        // auto update lastedited property
                         Console.WriteLine("\n");
+                        // update record in database
                         WorkContext.database.PersistCourseChanges(c);
                         Console.WriteLine("Course edited successfully.\n");
+                        // save database
                         DatabaseUtilities.Save(WorkContext.database);
                         System.Threading.Thread.Sleep(1000);
+                        // displayed edited record
                         DisplayLastEdited(null, null, null, c);
                         AutoReturn(3);
+                        //return to edit record menu
                         EditRecord();
 
                     }
                     else
                     {
+                        //let user know number he entered does not match any ids in database
                         Console.WriteLine("\nCourse with Id " + input + " does not exist.\n");
                         break;
                     }
 
                 }
+                // go back to edit course menu
                 AutoReturn(3);
                 Console.Clear();
                 EditCourse();
             }
             else
             {
+                // go back to edit course menu
                 Console.WriteLine("\nInvalid input.");
                 AutoReturn(2);
                 EditCourse();
             }
         }
+        /// <summary>
+        /// Method that handles edition of course description. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new course description for course.
+        /// </summary>
         private static void EditCourseDescription()
         {
+            // display courses in shortlist
             CourseShortList();
             Console.WriteLine("Enter Id of course you want to edit: ");
             Console.WriteLine("Enter -1 to exit edit mode and go back to selection");
@@ -565,35 +707,46 @@ namespace ITEC_491_GroupProject.Utils
             {
                 while (input != -1)
                 {
+                    // if course is found then proceed
                     if (WorkContext.database.Course.Any(x => x.Id == input))
                     {
                         Course c = new Course();
+                        // fetch course from database
                         c = WorkContext.database.GetCourse(input);
+                        // course description update
                         Console.WriteLine("Current description:\t" + c.Description);
                         Console.WriteLine("New course description:\t");
                         c.Description = Console.ReadLine();
+                        // auto update lastedited property
                         c.LastEdited = DateTime.Now;
                         Console.WriteLine("\n");
+                        // update record in database
                         WorkContext.database.PersistCourseChanges(c);
                         Console.WriteLine("Course edited successfully.\n");
+                        // save database
                         DatabaseUtilities.Save(WorkContext.database);
                         System.Threading.Thread.Sleep(1000);
+                        // displayed edited record
                         DisplayLastEdited(null, null, null, c);
                         AutoReturn(3);
+                        //return to edit record menu
                         EditRecord();
                     }
                     else
                     {
+                        //let user know number he entered does not match any ids in database
                         Console.WriteLine("\nCourse with Id " + input + " does not exist.\n");
                         break;
                     }
                 }
+                // go back to edit course menu
                 AutoReturn(3);
                 Console.Clear();
                 EditCourse();
             }
             else
             {
+                // go back to edit course menu
                 Console.WriteLine("\nInvalid input.");
                 AutoReturn(2);
                 EditCourse();
@@ -700,7 +853,7 @@ namespace ITEC_491_GroupProject.Utils
                         Console.WriteLine("Staff edited successfully.\n");
                         DatabaseUtilities.Save(WorkContext.database);
                         System.Threading.Thread.Sleep(1000);
-                        DisplayLastEdited(null,null, st, null);
+                        DisplayLastEdited(null, null, st, null);
                         AutoReturn(3);
                         EditRecord();
 
@@ -1768,7 +1921,7 @@ namespace ITEC_491_GroupProject.Utils
                 System.Threading.Thread.Sleep(2000);
             }
         }
-        private static void StudentShortList(bool remove =false)
+        private static void StudentShortList(bool remove = false)
         {
             if (WorkContext.database.Students.Count != 0)
             {
@@ -1797,7 +1950,7 @@ namespace ITEC_491_GroupProject.Utils
                 }
             }
         }
-        private static void TeacherShortList(bool remove =false)
+        private static void TeacherShortList(bool remove = false)
         {
             if (WorkContext.database.Teachers.Count != 0)
             {
@@ -1826,7 +1979,7 @@ namespace ITEC_491_GroupProject.Utils
                 }
             }
         }
-        private static void StaffShortList(bool remove=false)
+        private static void StaffShortList(bool remove = false)
         {
             if (WorkContext.database.Staff.Count != 0)
             {
@@ -1855,14 +2008,14 @@ namespace ITEC_491_GroupProject.Utils
                 }
             }
         }
-        private static void CourseShortList(bool remove=false)
+        private static void CourseShortList(bool remove = false)
         {
             if (WorkContext.database.Course.Count != 0)
             {
                 Console.WriteLine("---> Course Shortlist <---\n");
                 foreach (var course in WorkContext.database.Course)
                 {
-                    Console.WriteLine("ID --> " + course.Id + " Course Title:\t" +course.CourseTitle);
+                    Console.WriteLine("ID --> " + course.Id + " Course Title:\t" + course.CourseTitle);
                     Console.Write("\n");
                 }
             }

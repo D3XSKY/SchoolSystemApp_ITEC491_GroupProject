@@ -3,6 +3,13 @@ using System.Threading;
 
 namespace ITEC_491_GroupProject.Utils
 {
+     /// <summary>
+    /// We use class Staff to handle data about the staff.
+    /// </summary>
+    /// <remarks>
+    /// Parameters of this class are: nextId, id, appointmentDate, role.
+    /// We used Set and Get methods to set/get those parameters for staff object.
+    /// </remarks>
     public class Staff : Person
     {
         static int nextId;

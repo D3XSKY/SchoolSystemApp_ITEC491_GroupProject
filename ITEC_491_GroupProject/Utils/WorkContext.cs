@@ -1,5 +1,8 @@
 ﻿namespace ITEC_491_GroupProject.Utils
 {
+    /// <summary>
+    /// WorkContext is used to run application. 
+    /// </summary>
     public class WorkContext
     {
         public static Database database = new Database();

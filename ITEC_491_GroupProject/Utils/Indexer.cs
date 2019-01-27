@@ -5,7 +5,11 @@ using System.Threading;
 
 namespace ITEC_491_GroupProject.Utils
 {
-    //https://stackoverflow.com/questions/9262221/c-sharp-class-auto-increment-id
+    /// <summary>
+    /// Indexer class handles auto increment of id properties in classes.
+    /// Reference link: https://stackoverflow.com/questions/9262221/c-sharp-class-auto-increment-id
+    /// </summary>
+
     public class Indexer : IDisposable
     {
         static private int nextId;

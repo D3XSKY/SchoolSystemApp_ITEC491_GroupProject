@@ -3,6 +3,13 @@ using System.Threading;
 
 namespace ITEC_491_GroupProject
 {
+    /// <summary>
+    ///  Person class is a base class for Student, Teacher, Staff and Course.
+    /// </summary>
+    /// <remarks>
+    /// Parameters of this class are: id, firstName, lastName, dateOfBirth, createdDate, lastEdited.
+    /// We used Set and Get methods to set/get those parameters.
+    /// </remarks>
     public class Person : IDisposable
     {
         static int nextId;

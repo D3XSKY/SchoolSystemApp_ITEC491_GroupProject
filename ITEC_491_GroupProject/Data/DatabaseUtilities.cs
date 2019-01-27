@@ -5,6 +5,10 @@ using System.Text;
 
 namespace ITEC_491_GroupProject.Utils
 {
+    /// <summary>
+    /// This class contains utility methods for loading database when application starats. 
+    /// Moreover, auto-generation of database "data.txt" and reading/writing to that file is handled here upon application start.
+    /// </summary>
     public static class DatabaseUtilities
     {
         public static Database LoadData()

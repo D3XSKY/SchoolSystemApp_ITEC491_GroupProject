@@ -3,6 +3,13 @@ using System.Threading;
 
 namespace ITEC_491_GroupProject.Utils
 {
+    /// <summary>
+    /// We use class Course to handle courses.
+    /// </summary>
+    /// <remarks>
+    /// Parameters of this class are: nextId, id, courseTitle, ectsPoints, description, createDate, lastEdited
+    /// We used Set and Get methods to set/get those parameters for course object.
+    /// </remarks>
     public class Course : IDisposable
     {
         static int nextId;
