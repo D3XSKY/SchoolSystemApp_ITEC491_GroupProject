@@ -1,0 +1,9 @@
+C:\Users\Dejan\Documents\Visual Studio 2015\Projects\ITEC_491_GroupProject\ITEC_491_GroupProject\bin\Debug\ITEC_491_GroupProject.exe.config
+C:\Users\Dejan\Documents\Visual Studio 2015\Projects\ITEC_491_GroupProject\ITEC_491_GroupProject\bin\Debug\ITEC_491_GroupProject.exe
+C:\Users\Dejan\Documents\Visual Studio 2015\Projects\ITEC_491_GroupProject\ITEC_491_GroupProject\bin\Debug\ITEC_491_GroupProject.pdb
+C:\Users\Dejan\Documents\Visual Studio 2015\Projects\ITEC_491_GroupProject\ITEC_491_GroupProject\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Dejan\Documents\Visual Studio 2015\Projects\ITEC_491_GroupProject\ITEC_491_GroupProject\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Dejan\Documents\Visual Studio 2015\Projects\ITEC_491_GroupProject\ITEC_491_GroupProject\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dejan\Documents\Visual Studio 2015\Projects\ITEC_491_GroupProject\ITEC_491_GroupProject\obj\Debug\ITEC_491_GroupProject.exe
+C:\Users\Dejan\Documents\Visual Studio 2015\Projects\ITEC_491_GroupProject\ITEC_491_GroupProject\obj\Debug\ITEC_491_GroupProject.pdb
+C:\Users\Dejan\Documents\Visual Studio 2015\Projects\ITEC_491_GroupProject\ITEC_491_GroupProject\obj\Debug\ITEC_491_GroupProject.csprojResolveAssemblyReference.cache
