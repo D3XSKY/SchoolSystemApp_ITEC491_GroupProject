@@ -752,6 +752,12 @@ namespace ITEC_491_GroupProject.Utils
                 EditCourse();
             }
         }
+        /// <summary>
+        /// Method that displays edit menu for editing staff. 
+        /// User have few options to choose how to edit staff. 
+        /// In case he enters -1 he will go back to Edit Record menu.
+        /// Same logic is used for all records
+        /// </summary>
         private static void EditStaff()
         {
             Console.Clear();
@@ -811,6 +817,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditStaff();
             }
         }
+        /// <summary>
+        /// Method that handles edition of all information about staff. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new information (almost all staff properties) for staff
+        /// </summary>
         private static void EditStaffAll()
         {
             StaffShortList();
@@ -876,6 +886,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditStaff();
             }
         }
+        /// <summary>
+        /// Method that handles edition of staff person first name. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new first name  for for stuff record with selected id.
+        /// </summary>
         private static void EditStaffFirstName()
         {
             StaffShortList();
@@ -925,6 +939,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditStaff();
             }
         }
+        /// <summary>
+        /// Method that handles edition of staff person last name. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new last name  for for stuff record with selected id.
+        /// </summary>
         private static void EditStaffLastName()
         {
             StaffShortList();
@@ -974,6 +992,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditStaff();
             }
         }
+        /// <summary>
+        /// Method that handles edition of staff person date of birth. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new date of birth  for for stuff record with selected id.
+        /// </summary>
         private static void EditStaffDateOfBirth()
         {
             StaffShortList();
@@ -1025,6 +1047,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditStaff();
             }
         }
+        /// <summary>
+        /// Method that handles edition of staff person appointment date. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new appointment date  for for stuff record with selected id.
+        /// </summary>
         private static void EditStaffAppointmentDate()
         {
             StaffShortList();
@@ -1076,6 +1102,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditStaff();
             }
         }
+        /// <summary>
+        /// Method that handles edition of staff role. 
+        /// User enters id displayed in shortlist and then he gets prompted to input role  for for stuff record with selected id.
+        /// </summary>
         private static void EditStaffRole()
         {
             StaffShortList();
@@ -1125,6 +1155,12 @@ namespace ITEC_491_GroupProject.Utils
                 EditStaff();
             }
         }
+        /// <summary>
+        /// Method that displays edit menu for editing teachers. 
+        /// User have few options to choose how to edit teachers. 
+        /// In case he enters -1 he will go back to Edit Record menu.
+        /// Same logic is used for all records
+        /// </summary>
         private static void EditTeacher()
         {
             Console.Clear();
@@ -1180,6 +1216,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditTeacher();
             }
         }
+        /// <summary>
+        /// Method that handles edition of all information about teacher. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new information (almost all teacher properties) for teacher
+        /// </summary>
         private static void EditTeacherAll()
         {
             TeacherShortList();
@@ -1237,6 +1277,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditTeacher();
             }
         }
+        /// <summary>
+        /// Method that handles edition of teacher first name. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new first name  for for teacher record with selected id.
+        /// </summary>
         private static void EditTeacherFirstName()
         {
             TeacherShortList();
@@ -1285,6 +1329,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditTeacher();
             }
         }
+        /// <summary>
+        /// Method that handles edition of teacher last name. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new last name  for for teacher record with selected id.
+        /// </summary>
         private static void EditTeacherLastName()
         {
             TeacherShortList();
@@ -1334,6 +1382,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditTeacher();
             }
         }
+        /// <summary>
+        /// Method that handles edition of teacher date of birth. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new date of birth  for for teacher record with selected id.
+        /// </summary>
         private static void EditTeacherDateOfBirth()
         {
             TeacherShortList();
@@ -1385,6 +1437,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditTeacher();
             }
         }
+        /// <summary>
+        /// Method that handles edition of teacher appointment date. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new appointment date  for for teacher record with selected id.
+        /// </summary>
         private static void EditTeacherAppointmentDate()
         {
             TeacherShortList();
@@ -1436,6 +1492,12 @@ namespace ITEC_491_GroupProject.Utils
                 EditTeacher();
             }
         }
+        /// <summary>
+        /// Method that displays edit menu for editing students. 
+        /// User have few options to choose how to edit students. 
+        /// In case he enters -1 he will go back to Edit Record menu.
+        /// Same logic is used for all records
+        /// </summary>
         private static void EditStudent()
         {
             Console.Clear();
@@ -1491,6 +1553,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditStudent();
             }
         }
+        /// <summary>
+        /// Method that handles edition of all information about student. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new information (almost all student properties) for student
+        /// </summary>
         private static void EditStudentAll()
         {
             StudentShortList();
@@ -1548,6 +1614,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditStudent();
             }
         }
+        /// <summary>
+        /// Method that handles edition of student first name. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new first name  for for student record with selected id.
+        /// </summary>
         private static void EditStudentFirstName()
         {
             StudentShortList();
@@ -1596,6 +1666,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditStudent();
             }
         }
+        /// <summary>
+        /// Method that handles edition of student last name. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new last name  for for student record with selected id.
+        /// </summary>
         private static void EditStudentLastName()
         {
             StudentShortList();
@@ -1645,6 +1719,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditStudent();
             }
         }
+        /// <summary>
+        /// Method that handles edition of student date of birth. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new date of birth  for for student record with selected id.
+        /// </summary>
         private static void EditStudentDateOfBirth()
         {
             StudentShortList();
@@ -1696,6 +1774,10 @@ namespace ITEC_491_GroupProject.Utils
                 EditStudent();
             }
         }
+        /// <summary>
+        /// Method that handles edition of student enrollment date. 
+        /// User enters id displayed in shortlist and then he gets prompted to input new enrollment date for for student record with selected id.
+        /// </summary>
         private static void EditStudentEnrollmentDate()
         {
             StudentShortList();
@@ -1747,6 +1829,9 @@ namespace ITEC_491_GroupProject.Utils
                 EditStudent();
             }
         }
+        /// <summary>
+        /// Method that handles displaying data about specific group.
+        /// </summary>
         private static void DisplayDataAboutSpecificGroup()
         {
             {
@@ -1799,6 +1884,13 @@ namespace ITEC_491_GroupProject.Utils
                 }
             }
         }
+        /// <summary>
+        /// Method that handles displaying last edited record depending on which object is passed
+        /// </summary>
+        /// <param name="student">Either null or student</param>
+        /// <param name="teacher">Either null or teacher</param>
+        /// <param name="staff">Either null or staff</param>
+        /// <param name="course">Either null or course</param>
         private static void DisplayLastEdited(Student student, Teacher teacher, Staff staff, Course course)
         {
             if (student != null)
@@ -1862,6 +1954,13 @@ namespace ITEC_491_GroupProject.Utils
                 Console.Clear();
             }
         }
+        /// <summary>
+        /// Method that handles displaying last removed record depending on which object is passed
+        /// </summary>
+        /// <param name="student">Either null or student</param>
+        /// <param name="teacher">Either null or teacher</param>
+        /// <param name="staff">Either null or staff</param>
+        /// <param name="course">Either null or course</param>
         private static void DisplayLastRemoved(Student student, Teacher teacher, Staff staff, Course course)
         {
             if (student != null)
@@ -1921,6 +2020,11 @@ namespace ITEC_491_GroupProject.Utils
                 System.Threading.Thread.Sleep(2000);
             }
         }
+        /// <summary>
+        /// Method to display summary of students(shortlist). 
+        /// If removed is true and no records display removal validation message, else we'll display edit validation message if no data is present.
+        /// </summary>
+        /// <param name="remove"></param>
         private static void StudentShortList(bool remove = false)
         {
             if (WorkContext.database.Students.Count != 0)
@@ -1950,6 +2054,11 @@ namespace ITEC_491_GroupProject.Utils
                 }
             }
         }
+        /// <summary>
+        /// Method to display summary of teachers(shortlist). 
+        /// If removed is true and no records display removal validation message, else we'll display edit validation message if no data is present.
+        /// </summary>
+        /// <param name="remove"></param>
         private static void TeacherShortList(bool remove = false)
         {
             if (WorkContext.database.Teachers.Count != 0)
@@ -1979,6 +2088,11 @@ namespace ITEC_491_GroupProject.Utils
                 }
             }
         }
+        /// <summary>
+        /// Method to display summary of staff personnel(shortlist). 
+        /// If removed is true and no records display removal validation message, else we'll display edit validation message if no data is present.
+        /// </summary>
+        /// <param name="remove"></param>
         private static void StaffShortList(bool remove = false)
         {
             if (WorkContext.database.Staff.Count != 0)
@@ -2008,6 +2122,11 @@ namespace ITEC_491_GroupProject.Utils
                 }
             }
         }
+        /// <summary>
+        /// Method to display summary of courses(shortlist). 
+        /// If removed is true and no records display removal validation message, else we'll display edit validation message if no data is present.
+        /// </summary>
+        /// <param name="remove"></param>
         private static void CourseShortList(bool remove = false)
         {
             if (WorkContext.database.Course.Count != 0)
@@ -2037,6 +2156,9 @@ namespace ITEC_491_GroupProject.Utils
                 }
             }
         }
+        /// <summary>
+        /// Method to display information about all course records in database
+        /// </summary>
         private static void DisplayAllCourses()
         {
             string consoleRead;
@@ -2070,6 +2192,9 @@ namespace ITEC_491_GroupProject.Utils
 
             }
         }
+        /// <summary>
+        /// Method to display information about all staff records in database
+        /// </summary>
         private static void DisplayAllStaff()
         {
             {
@@ -2105,6 +2230,9 @@ namespace ITEC_491_GroupProject.Utils
                 }
             }
         }
+        /// <summary>
+        /// Method to display information about all teacher records in database
+        /// </summary>
         private static void DisplayAllTeachers()
         {
             string consoleRead;
@@ -2138,6 +2266,9 @@ namespace ITEC_491_GroupProject.Utils
 
             }
         }
+        /// <summary>
+        /// Method to display information about all student records in database
+        /// </summary>
         private static void DisplayAllStudents()
         {
             string consoleRead;
@@ -2172,6 +2303,9 @@ namespace ITEC_491_GroupProject.Utils
 
             }
         }
+        /// <summary>
+        /// Method to display information about all information about all existing records.
+        /// </summary>
         private static void DisplayAllData()
         {
             string consoleRead;
@@ -2310,6 +2444,11 @@ namespace ITEC_491_GroupProject.Utils
                 AddRecord();
             }
         }
+        /// <summary>
+        /// Method that handles addition of the courses.
+        /// In case he enters -1 he will go back to Add Record menu.
+        /// Same logic is used for adding all records
+        /// </summary>
         private static void AddCourse()
         {
             Console.Clear();
@@ -2329,6 +2468,11 @@ namespace ITEC_491_GroupProject.Utils
             AutoReturn(3);
             AddRecord();
         }
+        /// <summary>
+        /// Method that handles addition of the staff.
+        /// In case he enters -1 he will go back to Add Record menu.
+        /// Same logic is used for adding all records
+        /// </summary>
         private static void AddStaff()
         {
             Console.Clear();
@@ -2350,6 +2494,11 @@ namespace ITEC_491_GroupProject.Utils
             AutoReturn(3);
             AddRecord();
         }
+        /// <summary>
+        /// Method that handles addition of the teacher.
+        /// In case he enters -1 he will go back to Add Record menu.
+        /// Same logic is used for adding all records
+        /// </summary>
         private static void AddTeacher()
         {
             Console.Clear();
@@ -2372,7 +2521,9 @@ namespace ITEC_491_GroupProject.Utils
             AddRecord();
         }
         /// <summary>
-        /// 
+        /// Method that handles addition of the student.
+        /// In case he enters -1 he will go back to Add Record menu.
+        /// Same logic is used for adding all records
         /// </summary>
         private static void AddStudent()
         {
@@ -2395,6 +2546,9 @@ namespace ITEC_491_GroupProject.Utils
             AutoReturn(3);
             AddRecord();
         }
+        /// <summary>
+        /// Method that handles closing the application.
+        /// </summary>
         public static void Exit()
         {
             Console.WriteLine("School system will close now.");
@@ -2402,6 +2556,10 @@ namespace ITEC_491_GroupProject.Utils
             DatabaseUtilities.Save(WorkContext.database);
             Environment.Exit(1);
         }
+        /// <summary>
+        /// Return user with countdown for better experience
+        /// </summary>
+        /// <param name="time">Accepts time in seconds</param>
         public static void AutoReturn(int time)
         {
             for (int i = time; i > 0; --i)
